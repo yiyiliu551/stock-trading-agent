@@ -1,3 +1,6 @@
+ # Design Document ： 
+ # https://github.com/yiyiliu551/stock-trading-agent/blob/main/stock_agent_v8.pdf
+
 # stock-trading-agent
 
 # Stock Trading Agent — Design Document
