@@ -12,20 +12,28 @@
 
 #LangGraph
 #Scheduler
+
 #↓
 #Event Detection
+
 #↓
 #Signal Filtering
+
 #↓
 #AI Validation
+
 #↓
 #Human-in-the-Loop
+
 #↓
 #Execution Engine
+
 #↓
 #Risk Monitor
+
 #↓
 #Memory + Reflection
+
 
 # stock-trading-agent
 
