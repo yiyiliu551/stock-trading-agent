@@ -1,6 +1,32 @@
  # Design Document ： 
  # https://github.com/yiyiliu551/stock-trading-agent/blob/main/stock_agent_v8.pdf
 
+# I gave an LLM a brain. Then I built it hands（tools/Skills） --AI trading agent 
+#  I initially developed an AI agent using LangGraph for task orchestration. 
+
+# 🧠 The brain: Claude (LLM) Reasoning. Validating. Deciding when to act — and when not to.
+
+# 🤝 The hands: Custom-designed tools Not borrowed. Built specifically for this system: surge detection · volatility stop loss · batch execution · trade memory + reflection
+
+# ⚙️ LangGraph turns the entire trading workflow into a pluggable directed graph: each step is implemented as an independent node, transitions between nodes are controlled by conditional edges, failures trigger an early stop (abort_reason), and successful executions complete the loop and return control to the scheduler. 
+
+#LangGraph
+#Scheduler
+#↓
+#Event Detection
+#↓
+#Signal Filtering
+#↓
+#AI Validation
+#↓
+#Human-in-the-Loop
+#↓
+#Execution Engine
+#↓
+#Risk Monitor
+#↓
+#Memory + Reflection
+
 # stock-trading-agent
 
 # Stock Trading Agent — Design Document
