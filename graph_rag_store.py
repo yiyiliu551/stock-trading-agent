@@ -108,15 +108,25 @@ class GraphEvent:
 
     def to_document(self) -> str:
         """
-        Text stored in ChromaDB.
-        Prefix [TICKER][TIME] embeds metadata INTO the vector — 
-        this improves E5 recall vs relying only on metadata filters.
+        Text stored in ChromaDB and embedded by E5.
+
+        Structure:
+          Line 1 — [TICKER][TIME] triple: metadata baked into vector space
+                   so "NVDA earnings" query matches the right ticker+event
+          Line 2 — raw_text: original post/headline full content
+                   gives E5 the actual language to embed semantically
+
+        Both lines together = structured triple for precision
+                            + raw text for semantic richness.
         """
-        return (
+        triple = (
             f"[{self.ticker}][{self.timestamp}] "
             f"{self.subject} {self.predicate} {self.object_}. "
             f"Impact: {self.impact}. Source: {self.source}."
         )
+        if self.raw_text and self.raw_text.strip():
+            return f"{triple}\n{self.raw_text.strip()[:600]}"
+        return triple
 
     def to_metadata(self) -> dict:
         """Stored as ChromaDB metadata (for filtering by ticker/time/type)."""
